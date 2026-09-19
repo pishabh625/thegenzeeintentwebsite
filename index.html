@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheGenZeeIntent | Innovation with Purpose</title>
+    <meta name="description"
+        content="Building the next generation of digital tools. Creators of MediLence and Quick Scan.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#F80303', // Updated to specific hex F80303
+                            dark: '#111111',
+                            gray: '#1A1A1A',
+                            light: '#F3F4F6',
+                            surface: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2.5rem',
+                        '5xl': '3.5rem',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 40px -10px rgba(248, 3, 3, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        body {
+            background-color: #F8F9FA;
+            color: #111111;
+            overflow-x: hidden;
+        }
+
+        /* Hide Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D1D5DB;
+            border-radius: 99px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F80303;
+        }
+
+        /* Animation Utilities */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.98);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Blob Animation */
+        .shape-blob {
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+
+            0%,
+            100% {
+                border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            34% {
+                border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+                transform: translate(4px, 10px) rotate(5deg);
+            }
+
+            67% {
+                border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+                transform: translate(-4px, -5px) rotate(-5deg);
+            }
+        }
+
+        /* Marquee Animation */
+        .marquee-container {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-content {
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+
+</head>
+
+<body class="antialiased selection:bg-brand-red selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 top-0 pt-6 px-4 md:px-8" id="navbar">
+        <div
+            class="max-w-7xl mx-auto bg-white/90 backdrop-blur-xl rounded-full px-8 py-4 flex justify-between items-center border border-gray-200 shadow-sm">
+            <!-- Logo Area -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-brand-dark group-hover:ring-2 ring-brand-red transition-all">
+                    <!-- Updated Main Logo -->
+                    <img src="assets/logo_main.jpg" alt="TheGenZee Logo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-display font-bold text-xl tracking-tight text-gray-900">
+                    TheGenZeeIntent<span class="text-brand-red">.</span>
+                </span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+                <a href="#about" class="hover:text-brand-red transition-colors">Studio</a>
+                <a href="#products" class="hover:text-brand-red transition-colors">Products</a>
+                <a href="#vision" class="hover:text-brand-red transition-colors">Vision</a>
+            </div>
+
+            <a href="#connect"
+                class="hidden sm:flex group relative overflow-hidden bg-brand-dark text-white px-6 py-2.5 rounded-full text-sm font-medium transition-transform active:scale-95 shadow-lg shadow-gray-200">
+                <span class="relative z-10 group-hover:text-white transition-colors">Connect</span>
+                <div
+                    class="absolute inset-0 bg-brand-red transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300">
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header
+        class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div
+            class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-50">
+        </div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-gray-200/50 rounded-full blur-3xl opacity-60 pointer-events-none mix-blend-multiply">
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto">
+            <div class="reveal-up delay-100">
+                <div
+                    class="inline-flex items-center gap-2 py-2 px-4 rounded-full border border-gray-200 bg-white shadow-sm mb-8">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-red opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-red"></span>
+                    </span>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-gray-600">
+                        Building the Future
+                    </span>
+                </div>
+            </div>
+
+            <h1
+                class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] text-brand-dark mb-8 reveal-up delay-200">
+                Innovation with <br />
+                <span class="text-brand-red inline-block relative">
+                    Intent
+                    <svg class="absolute w-full h-3 -bottom-1 left-0 text-brand-red opacity-30" viewBox="0 0 100 10"
+                        preserveAspectRatio="none">
+                        <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="3" fill="none" />
+                    </svg>
+                </span>
+                & Purpose.
+            </h1>
+
+            <p
+                class="font-sans text-lg md:text-2xl text-gray-500 max-w-2xl mx-auto leading-relaxed reveal-up delay-300 font-light">
+                We bridge the gap between complex technology and daily utility.
+                Creators of <span class="font-medium text-gray-900">MediLence</span> and <span
+                    class="font-medium text-gray-900">Quick Scan</span>.
+            </p>
+
+            <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center reveal-up delay-400">
+                <a href="#products"
+                    class="w-full sm:w-auto px-8 py-4 bg-brand-red text-white rounded-full font-medium hover:bg-red-700 transition-colors shadow-glow flex items-center justify-center gap-2">
+                    Explore Our Apps
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </a>
+                <a href="#about"
+                    class="w-full sm:w-auto px-8 py-4 bg-white border border-gray-200 text-brand-dark rounded-full font-medium hover:border-gray-400 transition-colors flex items-center justify-center gap-2">
+                    Our Story
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee Band -->
+    <div class="py-12 bg-brand-dark text-white overflow-hidden marquee-container rotate-1 scale-105 my-12 shadow-2xl">
+        <div class="marquee-content whitespace-nowrap flex gap-16 items-center">
+            <span class="text-4xl font-display font-bold flex items-center gap-4">MEDILENCE <span
+                    class="text-brand-red text-2xl">●</span></span>
+            <span class="text-4xl font-display font-bold opacity-40 flex items-center gap-4">PRIVACY FIRST <span
+                    class="text-brand-red text-2xl">●</span></span>
+            <span class="text-4xl font-display font-bold flex items-center gap-4">QUICK SCAN <span
+                    class="text-brand-red text-2xl">●</span></span>
+            <span class="text-4xl font-display font-bold opacity-40 flex items-center gap-4">AD-FREE <span
+                    class="text-brand-red text-2xl">●</span></span>
+            <span class="text-4xl font-display font-bold flex items-center gap-4">GAMING <span
+                    class="text-brand-red text-2xl">●</span></span>
+            <span class="text-4xl font-display font-bold opacity-40 flex items-center gap-4">UNREAL ENGINE <span
+                    class="text-brand-red text-2xl">●</span></span>
+        </div>
+    </div>
+
+    <!-- Section: The Products -->
+    <section id="products" class="py-24 md:py-32 px-4 md:px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 px-4 reveal-up">
+                <div class="max-w-2xl">
+                    <span class="text-brand-red font-bold tracking-wide text-sm mb-4 block uppercase">Our
+                        Ecosystem</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900">Tools designed for <br>real
+                        impact.</h2>
+                </div>
+                <div class="hidden md:block">
+                    <p class="text-gray-500 text-right">01 — Current Releases<br>Available on Google Play</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+
+                <!-- MediLence Product Card -->
+                <div
+                    class="group relative bg-white rounded-[2.5rem] p-8 md:p-12 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 reveal-up overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-x-1/2 -translate-y-1/2">
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-10">
+                            <!-- MediLence Logo -->
+                            <div
+                                class="w-20 h-20 rounded-full flex items-center justify-center border border-blue-100 shadow-sm overflow-hidden bg-[#5783FF]">
+                                <img src="assets/logo_medilence.png" alt="MediLence Logo"
+                                    class="w-full h-full object-cover scale-110">
+                            </div>
+                            <span
+                                class="inline-flex items-center gap-1 bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> Live
+                            </span>
+                        </div>
+
+                        <h3 class="font-display text-3xl font-bold mb-4 text-gray-900">MediLence</h3>
+                        <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                            A comprehensive medical companion. Scan medicine strips to instantly understand dosage, side
+                            effects, and find alternatives. <strong>100% Free, Ad-Free & No Tracking.</strong>
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                            <div class="flex items-center gap-3 text-sm text-gray-700">
+                                <span
+                                    class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">✓</span>
+                                Drug Interactions
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-700">
+                                <span
+                                    class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">✓</span>
+                                Detailed Composition
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-700">
+                                <span
+                                    class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">✓</span>
+                                Multi Language Support
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-700">
+                                <span
+                                    class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs">✓</span>
+                                Offline Support
+                            </div>
+                        </div>
+
+                        <a href="https://play.google.com/store/apps/details?id=com.thegenzee.medilence&pcampaignid=web_share"
+                            target="_blank"
+                            class="inline-flex w-full items-center justify-center gap-2 bg-brand-dark text-white py-4 rounded-xl font-medium hover:bg-blue-600 transition-colors">
+                            Download Now
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Scan Product Card -->
+                <div
+                    class="group relative bg-brand-dark text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl transition-all duration-500 reveal-up delay-100 overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-gray-800 rounded-full blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-500 translate-x-1/2 -translate-y-1/2">
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-10">
+                            <!-- Quick Scan Logo -->
+                            <div
+                                class="w-20 h-20 rounded-full flex items-center justify-center border border-gray-700 shadow-lg overflow-hidden bg-[#E2E2E2]">
+                                <img src="assets/logo_quickscan.png" alt="Quick Scan Logo"
+                                    class="w-full h-full object-cover scale-100">
+                            </div>
+                            <span
+                                class="inline-flex items-center gap-1 bg-gray-800 text-gray-300 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider border border-gray-700">
+                                Utility
+                            </span>
+                        </div>
+
+                        <h3 class="font-display text-3xl font-bold mb-4">Quick Scan</h3>
+                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                            A zero-nonsense scanner. Designed for speed and privacy. No ads, no tracking, just instant
+                            QR and barcode recognition.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                            <div class="flex items-center gap-3 text-sm text-gray-300">
+                                <span
+                                    class="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-xs">⚡</span>
+                                Instant Capture
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-300">
+                                <span
+                                    class="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-xs">🛡️</span>
+                                Privacy Focused
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-300">
+                                <span
+                                    class="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-xs">🚫</span>
+                                100% Ad-Free
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-300">
+                                <span
+                                    class="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-xs">📂</span>
+                                History Log
+                            </div>
+                        </div>
+
+                        <a href="https://play.google.com/store/apps/details?id=com.GenZ.QuickScanner&pcampaignid=web_share"
+                            target="_blank"
+                            class="inline-flex w-full items-center justify-center gap-2 bg-white text-brand-dark py-4 rounded-xl font-medium hover:bg-gray-200 transition-colors">
+                            Get it Free
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Studio & Values -->
+    <section id="about" class="py-24 px-4 md:px-6 bg-white rounded-t-[3rem] border-t border-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-up">
+                    <span class="text-brand-red font-bold tracking-wide text-sm mb-4 block uppercase">The Studio</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                        Tech geeks since <br>
+                        <span class="text-gray-400">childhood.</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 leading-relaxed mb-6">
+                        It started with solving random tech problems for neighbors. "How do I fix this?" "Why is my
+                        computer slow?" We loved having the answers.
+                    </p>
+                    <p class="text-lg text-gray-500 leading-relaxed">
+                        Today, we're two best friends pouring our passion into apps that solve real-world problems. We
+                        don't believe in corporate jargon or bloated software. We believe in code that respects the
+                        user.
+                    </p>
+
+                    <div class="mt-8 flex gap-8 border-t border-gray-100 pt-8">
+                        <div>
+                            <span class="block text-3xl font-bold text-brand-dark">2+</span>
+                            <span class="text-sm text-gray-500 font-medium uppercase tracking-wide">Live Apps</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-bold text-brand-dark">100%</span>
+                            <span class="text-sm text-gray-500 font-medium uppercase tracking-wide">Self Funded</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 reveal-scale">
+                    <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
+                        <div
+                            class="w-10 h-10 bg-brand-dark rounded-full flex items-center justify-center text-white mb-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">User Centric</h4>
+                        <p class="text-gray-500">We build what you need, not what looks good in a pitch deck.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
+                        <div
+                            class="w-10 h-10 bg-brand-red rounded-full flex items-center justify-center text-white mb-4">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">Privacy First</h4>
+                        <p class="text-gray-500">Your data is yours. Our apps are designed to work offline whenever
+                            possible.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Future Vision -->
+    <section id="vision" class="py-24 px-4 md:px-6 bg-brand-light">
+        <div class="max-w-7xl mx-auto rounded-[3rem] bg-brand-dark overflow-hidden relative">
+            <div
+                class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+            </div>
+
+            <div class="relative z-10 grid lg:grid-cols-2 gap-12 p-8 md:p-20 items-center">
+                <div class="reveal-up">
+                    <span class="text-brand-red font-bold tracking-wide text-sm mb-4 block uppercase">What's Next</span>
+                    <h2 class="font-display text-4xl md:text-6xl font-bold mb-6 text-white">
+                        From Utility to <br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-orange-500">Immersion.</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 leading-relaxed mb-8">
+                        We are currently expanding into game development. Leveraging <strong>Unreal Engine</strong> and
+                        <strong>Unity</strong> to build worlds that tell stories.
+                    </p>
+                    <button
+                        class="text-white font-bold border-b-2 border-brand-red pb-1 hover:text-brand-red transition-colors">
+                        Follow the journey →
+                    </button>
+                </div>
+
+                <div class="reveal-scale flex justify-center">
+                    <div class="relative w-64 h-64 md:w-96 md:h-96">
+                        <div class="absolute inset-0 bg-brand-red/20 blur-3xl rounded-full animate-pulse"></div>
+                        <div
+                            class="relative w-full h-full rounded-3xl border border-gray-800 flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform duration-500 overflow-hidden shadow-2xl">
+                            <img src="assets/gaming_vision.png" alt="Game Vision Art"
+                                class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="connect" class="bg-white pt-24 pb-8 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center reveal-up mb-20">
+                <h2 class="font-display text-5xl md:text-7xl font-bold mb-8 tracking-tighter text-brand-dark">
+                    Join the <span class="text-brand-red">GenZee</span> Era.
+                </h2>
+                <p class="text-gray-500 text-lg mb-8 max-w-xl mx-auto">
+                    We are independent developers building out of passion. Support us by trying our apps or leaving a
+                    review.
+                </p>
+
+                <!-- New Contact Section -->
+                <div
+                    class="mb-12 inline-flex flex-col items-center justify-center p-6 bg-gray-50 rounded-3xl border border-gray-100">
+                    <span class="text-sm font-bold text-brand-red uppercase tracking-wider mb-2">Get in Touch</span>
+                    <a href="mailto:thegenz23@gmail.com"
+                        class="text-2xl md:text-3xl font-display font-bold text-gray-900 hover:text-brand-red transition-colors border-b-2 border-transparent hover:border-brand-red">
+                        thegenz23@gmail.com
+                    </a>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://play.google.com/store/apps/details?id=com.thegenzee.medilence&pcampaignid=web_share"
+                        class="px-8 py-4 bg-brand-dark text-white rounded-full font-medium hover:bg-brand-red transition-colors shadow-lg">
+                        Get MediLence
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row justify-between items-center border-t border-gray-100 pt-8 text-sm text-gray-500">
+                <div class="mb-4 md:mb-0 flex items-center gap-2">
+                    <div class="w-6 h-6 bg-brand-dark rounded-full flex items-center justify-center overflow-hidden">
+                        <img src="assets/logo_main.jpg" alt="G" class="w-full h-full object-cover">
+                    </div>
+                    <span>© 2021 TheGenZeeIntent.</span>
+                </div>
+                <div class="flex gap-6">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/thegenzeeintent"
+                        class="text-gray-400 hover:text-brand-red transition-colors" aria-label="Instagram">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+
+                    <!-- Twitter/X -->
+                    <a href="https://x.com/thegenzeeintent" class="text-gray-400 hover:text-brand-red transition-colors"
+                        aria-label="Twitter">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/thegenzee-intent-0780933a2"
+                        class="text-gray-400 hover:text-brand-red transition-colors" aria-label="LinkedIn">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@TheGenZeeIntent"
+                        class="text-gray-400 hover:text-brand-red transition-colors" aria-label="YouTube">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                        </svg>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/profile.php?id=61585538432599"
+                        class="text-gray-400 hover:text-brand-red transition-colors" aria-label="Facebook">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Smooth Reveal on Scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+            revealElements.forEach(el => observer.observe(el));
+
+            // 2. Navbar glass effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('pt-6', 'px-4', 'md:px-8');
+                    navbar.classList.add('py-2', 'px-2');
+                } else {
+                    navbar.classList.add('pt-6', 'px-4', 'md:px-8');
+                    navbar.classList.remove('py-2', 'px-2');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
